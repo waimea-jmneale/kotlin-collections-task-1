@@ -22,9 +22,9 @@ fun main() {
     val monkeys = mutableListOf<String>()  //
 
     // Add in some test monkeys
-    monkeys.add("No more monkeys jumping on the bed")
-    monkeys.add("Jimmy little timmy")
-    monkeys.add("Fredirick the almighty")
+    monkeys.add("Dave")
+    monkeys.add("Jimmy")
+    monkeys.add("Sally")
 
     // Show the monkeys
     showMonkeys(monkeys)
@@ -77,7 +77,7 @@ fun main() {
     println("Longest Name: ${longestMonkeyName(monkeys)}")
 
     // Check the list
-    check(monkeys.count() == 0)
+    check(monkeys.count() == 4)
     check(monkeyCounter(monkeys) == "There are 4 monkeys!")
 
     // Try to delete 10 monkeys
@@ -91,7 +91,7 @@ fun main() {
     println("Longest Name: ${longestMonkeyName(monkeys)}")
 
     // Check the list
-    check(monkeys.count() == 4)
+    check(monkeys.count() == 0)
     check(monkeyCounter(monkeys) == "There are no monkeys!")
 }
 
@@ -121,14 +121,13 @@ fun showMonkeys(monkeyList: List<String>) {
  */
 fun getNewMonkey(monkeyList: MutableList<String>) {
     // Ask the user for a monkey name (no blanks)
-    println("Please give a new monkey name: ")
-
+    println("New Monkey")
+    val userInput = readln()
     // Add the name to the list
-
+    monkeyList.add(1, (userInput))
     // Show some feedback
-
+    println("Added new monkey: $userInput")
 }
-
 
 /**
  * Returns the number of monkeys in the given list
@@ -139,16 +138,22 @@ fun getNewMonkey(monkeyList: MutableList<String>) {
  */
 fun monkeyCounter(monkeyList: List<String>): String {
     // return the number of monkeys in the list
-    return "MONKEY COUNT MESSAGE"   // FIXME!
+    val numMonkeys = monkeyList.size
+    return "There are $numMonkeys monkeys!"
 }
-
 
 /**
  * Returns the name of the monkey
  */
 fun longestMonkeyName(monkeyList: List<String>): String {
     // Loop through the list and find the longest name
-    return "MONKEY NAME HERE"   // FIXME!
+    var longestWord = ""
+    for (name in monkeyList) {
+        if (name.length > longestWord.length) {
+            longestWord = name
+        }
+    }
+    return longestWord
 }
 
 
